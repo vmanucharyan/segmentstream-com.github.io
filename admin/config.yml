@@ -1,6 +1,8 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: vmanucharyan/segmentstream-docs
   branch: master # Branch to update (optional; defaults to master)
+  site-domain: netlify.segmentstream.dev
 
 publish_mode: editorial_workflow
 media_folder: "media"
