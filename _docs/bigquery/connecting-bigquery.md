@@ -21,4 +21,8 @@ Complete the following steps to connect BigQuery to SegmentStream:
 5. In the **BigQuery dataset** dropdown select the dataset that you will use: ![](/img/bigquery_connect.1.png)
 6. Click **Save**.
 
+
+
+![](img/uploads/ln_22x.png "image")
+
 Now you've connected BigQuery to SegmentStream.
