@@ -2,7 +2,7 @@
 layout: page
 section: bigquery
 navigation_title: Connecting BigQuery
-title: 123 Connecting BigQuery to SegmentStream
+title: 12345 Connecting BigQuery to SegmentStream
 order: 6
 date: 2020-04-29T00:00:00.000Z
 ---
@@ -20,5 +20,9 @@ Complete the following steps to connect BigQuery to SegmentStream:
 4. In the **Google Cloud project** dropdown select project that contains the dataset that you want to use with SegmentStream.
 5. In the **BigQuery dataset** dropdown select the dataset that you will use: ![](/img/bigquery_connect.1.png)
 6. Click **Save**.
+
+
+
+![](img/uploads/ln_22x.png "image")
 
 Now you've connected BigQuery to SegmentStream.
