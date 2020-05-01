@@ -23,6 +23,6 @@ Complete the following steps to connect BigQuery to SegmentStream:
 
 
 
-![](img/uploads/ln_22x.png "image")
+![](/media/ln_22x.png "image")
 
 Now you've connected BigQuery to SegmentStream.
