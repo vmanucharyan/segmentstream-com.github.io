@@ -5,7 +5,7 @@ backend:
   site-domain: netlify.segmentstream.dev
 
 publish_mode: editorial_workflow
-media_folder: "media"
+media_folder: "img/uploads"
 
 collections:
   - name: "bigquery"
