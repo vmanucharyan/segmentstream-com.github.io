@@ -1,10 +1,16 @@
 ---
 layout: page
 section: bigquery
-navigation_title: "Creating GCP account"
-title: "Creating Google Cloud Platform account"
+navigation_title: Creating GCP account
+title: Creating Google Cloud Platform account
 order: 2
-date: 2020-04-29
+date: 2020-04-29T00:00:00.000Z
+other-body: |-
+  Some other content
+
+  # Test
+
+  ![](/media/ln_22x.png)
 ---
 
 <!---
