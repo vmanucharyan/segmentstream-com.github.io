@@ -1,31 +1,40 @@
 ---
 layout: page
 section: digitaldata
-title: "changes"
+title: changes
 order: 1
 ---
+Some changes
 
-It is often necessary to change the contents of the `digitalData` variable without reloading the page.
-For example: when subscribing to a newsletter, adding a product to the cart, logging in, registering, and many other events. In this case, you should use the construct in the form of `digitalData.changes.push (...)`. SegmentStream "listens" to the change of the array `digitalData.changes` and automatically updates the corresponding elements of the `digitalData` object.
+![](/media/ln_22x.png)
+
+
+
+It is often necessary to change the contents of the `digitalData` variable without reloading the page. For example: when subscribing to a newsletter, adding a product to the cart, logging in, registering, and many other events. In this case, you should use the construct in the form of `digitalData.changes.push (...)`. SegmentStream "listens" to the change of the array `digitalData.changes` and automatically updates the corresponding elements of the `digitalData` object.
 
 > We strongly do not recommend changing the contents of `digitalData` by directly overriding elements in the form of `digitalData.user.name` = 'Ivan'.
 
 ### There are 2 ways to use the changes method:
-------
+
+- - -
+
 <ul class="page-navigation">
   <li><a href="#changingSpecificVariable">Changing a specific variable</a></li>
-  <li><a href="#changingDigitalDataObject">Changing the entire `digitalData` object</a></li>
+  <li><a href="#changingDigitalDataObject">Changing the entire \`digitalData\` object</a></li>
 </ul>
 
 ### <a name="changingSpecificVariable"></a>Changing a specific variable
+
 If you need to dynamically change the value of one variable, a special array of 3 elements must be added to the array `digitalData.changes`:
- - The name of the `digitalData` variable the value of which must be dynamically changed
- - An object, a String, or a Number that will replace the value of a variable
- - Name of the source of the data change
+
+* The name of the `digitalData` variable the value of which must be dynamically changed
+* An object, a String, or a Number that will replace the value of a variable
+* Name of the source of the data change
 
 **Example**: The visitor of the site subscribes to the newsletter. The information that the visitor has successfully subscribed is displayed without reloading the page. At this point, you need to change the value of the variable `digitalData.user.isSubscribed` from false to true.
 
 ##### State of the digitalData before the subscription event:
+
 ```javascript
 digitalData = {
   ...
@@ -39,6 +48,7 @@ digitalData = {
 ```
 
 ##### The sequence of adding the event and changes in `digitalData`:
+
 ```javascript
 //After the server responds, confirming a successful subscription - we add the event to the array digitalData.events
 digitalData.events.push({
@@ -51,8 +61,8 @@ digitalData.events.push({
 digitalData.changes.push(['user.isSubscribed', true, 'Source Code']);
 ```
 
-
 ##### State of the digitalData after the subscription event:
+
 ```javascript
 digitalData = {
   ...
@@ -66,21 +76,23 @@ digitalData = {
 ```
 
 ### <a name="changingDigitalDataObject"></a>Changing the entire `digitalData` object
+
 This approach should be used for sites that are fully built on AJAX or Single-page (SP) sites.
 
 Single-page sites are a bit different from the usual sites. When clicking on a link, the SP does not load a new page. Instead, the visitor's browser sends an asynchronous request (AJAX-request) to the server. The server returns new content. With this content, the visitor's browser dynamically replaces or complements the content that was previously on the site. As a result, the visitor seems to have downloaded a new page of the site.
 
 In order for SegmentStream to correctly process dynamic content changes, you need to dynamically update the data layer of digitalData. The algorithm is described below:
 
-- The user clicks on a link, the request goes to the server
-- The server responds with the content of the new page, as well as a new copy of the digitalData object
-- After the content and URL of the site change, you need to call the methods in the following sequence: `digitalData.changes.push({...})` and `digitalData.events.push({name: 'Viewed Page'})`
+* The user clicks on a link, the request goes to the server
+* The server responds with the content of the new page, as well as a new copy of the digitalData object
+* After the content and URL of the site change, you need to call the methods in the following sequence: `digitalData.changes.push({...})` and `digitalData.events.push({name: 'Viewed Page'})`
 
 > Important. A complete change of the object `digitalData` on single-page sites should always be accompanied by the event "Viewed Page". This event helps the SegmentStream system to determine the moment of the "virtual load" of a new page.
 
 **Example**: A visitor on a single-page site navigates through a link from the catalog to a product card. The content of the site is dynamically updated.
 
 ##### State of digitalData before moving through a link from the catalog:
+
 ```javascript
 digitalData = {
   version: '1.1.2', // wont change
@@ -95,6 +107,7 @@ digitalData = {
 ```
 
 ##### The sequence of adding the event of loading a new page and changes to digitalData:
+
 ```javascript
 //Add a change to the array digitalData.changes
 digitalData.changes.push({
@@ -107,9 +120,11 @@ digitalData.events.push({
   name: 'Viewed Page',
 });
 ```
+
 > Note the sequence: first change the object, then add the event "Viewed Page"
 
 ##### State of digitalData after loading the product page:
+
 ```javascript
 digitalData = {
   version: '1.1.2', // didnt change
