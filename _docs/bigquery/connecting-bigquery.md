@@ -5,6 +5,8 @@ navigation_title: Connecting BigQuery
 title: 123 Connecting BigQuery to SegmentStream
 order: 6
 date: 2020-04-29T00:00:00.000Z
+other-body: |
+    Some content
 ---
 <!---
 In this article we explain how to connect Google BigQuery inside the admin panel
